@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+j#!/usr/bin/env bash
 
 export ANDROID_HOME=/opt/android-sdk-linux
 export ANDROID_SDK_ROOT=${ANDROID_HOME}

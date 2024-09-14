@@ -9,9 +9,11 @@ ENV ANDROID_SDK_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK_ROOT /opt/android-sdk-linux
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV ANDROID_SDK /opt/android-sdk-linux
-ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk
+ENV JAVA_HOME /usr/lib/jvm/java-17-amazon-corretto
 
 ENV PATH $PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin/:$ANDROID_HOME/build-tools/34.0.0/:$ANDROID_HOME/emulator/:$ANDROID_HOME/bin:/opt/tools
+
+RUN wget -O /etc/apk/keys/amazoncorretto.rsa.pub https://apk.corretto.aws/amazoncorretto.rsa.pub && echo "https://apk.corretto.aws/" >> /etc/apk/repositories && apk update
 
 # Install Required Tools
 RUN apk -U update && apk -U add \
@@ -26,7 +28,7 @@ RUN apk -U update && apk -U add \
   libstdc++ \
   libgcc \
   mesa-dev \
-  openjdk17 \
+  amazon-corretto-17 \
   pulseaudio-dev \
   su-exec \
   ncurses \
